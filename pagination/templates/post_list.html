@@ -1,0 +1,39 @@
+<!-- В файле blog/templates/blog/post_list.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <!-- Отображение постов -->
+    {% for post in page.object_list %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.body|truncatewords:20 }}</p>
+        </div>
+    </div>
+    {% endfor %}
+
+    <!-- Пагинация -->
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            {% if page.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page={{ page.previous_page_number }}">«</a></li>
+            {% else %}
+            <li class="page-item disabled"><span class="page-link">«</span></li>
+            {% endif %}
+            {% for i in paginator.page_range %}
+            {% if page.number == i %}
+            <li class="page-item active"><span class="page-link">{{ i }} <span class="sr-only">(current)</span></span></li>
+            {% else %}
+            <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+            {% endif %}
+            {% endfor %}
+            {% if page.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{ page.next_page_number }}">»</a></li>
+            {% else %}
+            <li class="page-item disabled"><span class="page-link">»</span></li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+{% endblock content %}

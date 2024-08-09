@@ -1,0 +1,25 @@
+body {
+    background-color: rgb(52, 56, 9);
+}
+
+option {
+    color: aqua;
+    font-size: 14;
+    background-color: black;
+}
+.forms {
+    color: azure;
+    font-size: 25px;
+}
+.bd_objects {
+    font-size: 25px;
+    color: azure;
+}
+a {
+    color: cyan;
+    font-size: 25px;
+}
+.forms_all {
+    text-align: center; 
+    vertical-align: sub;
+}
